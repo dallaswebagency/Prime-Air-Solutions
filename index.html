@@ -10,258 +10,293 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#192D56; --ink:#0D1830; --sky:#4DBDEC; --sky-d:#1E9BD3; --ice:#EEF5FA; --mist:#DCE8F1;
-  --paper:#FFFFFF; --text:#1B2640; --muted:#5B6884; --line:rgba(25,45,86,.14);
-  --wide:'Archivo',sans-serif; --body:'Figtree',sans-serif;
+  --navy:#192D56; --ink:#0B1530; --deep:#07102A; --sky:#4DBDEC; --sky2:#8AD6F5; --skyd:#1E9BD3;
+  --ice:#EEF5FA; --mist:#DCE8F1; --text:#1B2640; --muted:#5B6884; --line:rgba(25,45,86,.12);
+  --wide:'Archivo',sans-serif; --body:'Figtree',sans-serif; --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);color:var(--text);background:var(--paper);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);color:var(--text);background:#fff;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{width:min(1240px,92vw);margin:0 auto}
-.h{font-family:var(--wide);font-stretch:118%;font-weight:800;line-height:.98;letter-spacing:-.02em;color:var(--navy)}
-.h em{font-style:italic;font-stretch:100%;font-weight:600;color:var(--sky-d)}
-.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--wide);font-stretch:110%;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky-d)}
-.tag::before{content:"";width:26px;height:9px;background:repeating-linear-gradient(to bottom,var(--sky) 0 2px,transparent 2px 3.5px)}
-.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--wide);font-stretch:108%;font-weight:700;font-size:15px;padding:17px 26px;border-radius:4px;transition:.25s;cursor:pointer;border:0}
-.btn-sky{background:var(--sky);color:var(--ink)}
-.btn-sky:hover{background:#fff;color:var(--navy)}
+.wrap{width:min(1280px,92vw);margin:0 auto}
+.disp{font-family:var(--wide);font-stretch:120%;font-weight:800;line-height:.96;letter-spacing:-.03em}
+.disp em{font-style:italic;font-stretch:92%;font-weight:500;letter-spacing:-.015em}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--wide);font-stretch:112%;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--skyd)}
+.eyebrow i{display:grid;gap:3px;width:28px}
+.eyebrow i b{height:2px;background:currentColor;display:block}
+.eyebrow i b:nth-child(2){width:70%}.eyebrow i b:nth-child(3){width:42%}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--wide);font-stretch:108%;font-weight:700;font-size:15px;padding:18px 28px;border-radius:100px;transition:.3s;cursor:pointer;border:0;white-space:nowrap}
+.btn svg{width:18px;height:18px;transition:.3s}
+.btn:hover svg{transform:translateX(4px)}
+.btn-sky{background:var(--sky);color:var(--deep);box-shadow:0 14px 34px -12px rgba(77,189,236,.75)}
+.btn-sky:hover{background:#fff}
 .btn-navy{background:var(--navy);color:#fff}
-.btn-navy:hover{background:var(--sky);color:var(--ink)}
-.btn-ghost{color:#fff;border:1.5px solid rgba(255,255,255,.45)}
-.btn-ghost:hover{border-color:var(--sky);color:var(--sky)}
-.btn svg{width:18px;height:18px}
+.btn-navy:hover{background:var(--skyd)}
+.btn-line{color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(6px)}
+.btn-line:hover{border-color:var(--sky);color:var(--sky)}
 
-/* top bar */
-.topbar{background:var(--ink);color:#C9D6E8;font-size:13.5px}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:9px 0;gap:20px}
-.topbar a:hover{color:var(--sky)}
-.topbar .r{display:flex;gap:26px}
-.topbar b{color:#fff;font-weight:600}
-
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
-header .logo img{height:78px;margin-left:-14px;width:auto}
-nav ul{display:flex;gap:38px;list-style:none;font-weight:600;font-size:15.5px;color:var(--navy)}
+header{position:absolute;top:0;left:0;right:0;z-index:50;padding:22px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.97);border-radius:100px;padding:8px 10px 8px 26px;box-shadow:0 20px 50px -25px rgba(0,0,0,.5)}
+header.fixed{position:fixed;padding:12px 0;animation:drop .4s ease}
+@keyframes drop{from{transform:translateY(-100%)}}
+.logo img{height:76px;width:auto;margin:-12px 0}
+nav ul{display:flex;gap:6px;list-style:none}
 nav li{position:relative}
-nav a{padding:30px 0;display:inline-block}
-nav a:hover{color:var(--sky-d)}
-nav .dd{position:absolute;top:100%;left:-18px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--sky);min-width:230px;padding:10px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s;box-shadow:0 20px 40px -20px rgba(13,24,48,.3)}
+nav a{display:block;padding:12px 18px;border-radius:100px;font-weight:600;font-size:15.5px;color:var(--navy);transition:.2s}
+nav a:hover{background:var(--ice)}
+nav .dd{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border-radius:16px;min-width:240px;padding:10px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;box-shadow:0 30px 60px -25px rgba(11,21,48,.4)}
 nav li:hover .dd{opacity:1;visibility:visible;transform:none}
-nav .dd a{padding:9px 20px;display:block;font-weight:500}
-.hcta{display:flex;align-items:center;gap:22px}
-.hcall{display:flex;flex-direction:column;line-height:1.2;text-align:right}
-.hcall small{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.hcall a{font-family:var(--wide);font-stretch:110%;font-weight:800;color:var(--navy);font-size:18px}
-.burger{display:none;background:none;border:0;width:44px;height:44px}
-.burger span{display:block;height:2px;background:var(--navy);margin:6px 8px}
+nav .dd a{font-weight:500}
+.hright{display:flex;align-items:center;gap:8px}
+.hphone{display:flex;align-items:center;gap:10px;padding:0 14px;font-family:var(--wide);font-stretch:108%;font-weight:800;color:var(--navy)}
+.hphone span{width:38px;height:38px;border-radius:50%;background:var(--ice);display:grid;place-items:center;color:var(--skyd)}
+.burger{display:none;background:var(--ice);border:0;width:48px;height:48px;border-radius:50%}
+.burger span{display:block;height:2px;width:20px;background:var(--navy);margin:5px auto}
 
-/* hero */
-.hero{position:relative;background:var(--ink);color:#fff;overflow:hidden}
-.hero-img{position:absolute;inset:0 0 0 38%;}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:42% 50%}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 0%,rgba(13,24,48,.55) 30%,rgba(13,24,48,0) 60%)}
-.hero .wrap{position:relative;z-index:2;min-height:660px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center}
-.hero-copy{padding:90px 0 120px}
-.hero h1{font-family:var(--wide);font-stretch:122%;font-weight:800;font-size:clamp(46px,6.1vw,88px);line-height:.94;letter-spacing:-.03em}
-.hero h1 em{display:block;font-style:italic;font-stretch:96%;font-weight:500;color:var(--sky);letter-spacing:-.01em}
-.hero p{max-width:470px;margin:28px 0 38px;color:#BFCBDD;font-size:18.5px}
+.hero{position:relative;background:radial-gradient(120% 80% at 80% 0%,#1C3A72 0%,var(--ink) 45%,var(--deep) 100%);color:#fff;overflow:hidden;padding:150px 0 170px}
+.flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
+.flow path{fill:none;stroke:url(#fg);stroke-width:1.4;stroke-dasharray:6 14;animation:air 9s linear infinite}
+.flow path:nth-child(2n){animation-duration:13s;stroke-width:1}
+.flow path:nth-child(3n){animation-duration:7s;opacity:.6}
+@keyframes air{to{stroke-dashoffset:-400}}
+.grain{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
+.hero .eyebrow{color:var(--sky)}
+.hero h1{font-size:clamp(50px,6.6vw,104px);margin:26px 0 30px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:inline-block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}}
+.hero h1 em{color:var(--sky);background:linear-gradient(90deg,var(--sky),var(--sky2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.08em}
+.hero p.lead{max-width:500px;color:#B9C7DC;font-size:19px;margin-bottom:40px}
 .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
-.streaks{position:absolute;left:0;top:118px;width:64px;display:grid;gap:7px;z-index:3}
-.streaks i{height:3px;background:var(--sky);display:block}
-.streaks i:nth-child(2){width:78%}.streaks i:nth-child(3){width:56%}.streaks i:nth-child(4){width:34%}
-.hero-stamp{position:absolute;right:4vw;bottom:0;z-index:3;background:#fff;color:var(--navy);padding:24px 28px 22px;width:330px;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%)}
-.hero-stamp small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.hero-stamp strong{display:block;font-family:var(--wide);font-stretch:112%;font-size:20px;line-height:1.2;margin-top:6px}
+.hvis{position:relative;height:620px}
+.hvis .ph{position:absolute;inset:0 0 0 40px;border-radius:32px;overflow:hidden;box-shadow:0 60px 100px -40px rgba(0,0,0,.8)}
+.hvis .ph img{width:100%;height:100%;object-fit:cover;object-position:40% 50%;transform:scale(1.08);animation:zoom 2s ease forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hvis .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 50%,rgba(7,16,42,.7))}
+.hvis .ring{position:absolute;left:-10px;top:60px;width:150px;height:150px;border-radius:50%;border:1.5px dashed rgba(77,189,236,.6);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip{position:absolute;background:rgba(255,255,255,.1);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:18px 22px;color:#fff;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.chip.rate{left:0;bottom:70px;display:flex;align-items:center;gap:16px}
+.chip.rate b{font-family:var(--wide);font-stretch:120%;font-weight:900;font-size:42px;line-height:1}
+.chip.rate .st{color:#FFC94A;letter-spacing:2px;font-size:15px}
+.chip.rate small{display:block;font-size:13px;color:#D3DEED}
+.chip.svc{right:-20px;top:46px;animation-delay:-3s;padding:14px}
+.chip.svc div{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;padding:7px 10px}
+.chip.svc div::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 4px rgba(77,189,236,.25)}
 
-/* marquee */
-.ticker{background:var(--sky);color:var(--ink);overflow:hidden;border-bottom:1px solid rgba(0,0,0,.08)}
-.ticker-track{display:flex;width:max-content;animation:roll 34s linear infinite}
-.ticker span{font-family:var(--wide);font-stretch:125%;font-weight:800;font-size:22px;padding:20px 0;display:flex;align-items:center;white-space:nowrap;text-transform:uppercase;letter-spacing:-.01em}
-.ticker span em{font-style:italic;font-stretch:90%;font-weight:500;text-transform:none;margin-left:8px}
-.ticker span::after{content:"";width:34px;height:12px;margin:0 34px;background:repeating-linear-gradient(to bottom,var(--navy) 0 2.5px,transparent 2.5px 4.5px)}
+.book{position:relative;z-index:5;margin-top:-82px}
+.book form{background:#fff;border-radius:26px;padding:16px;display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:10px;box-shadow:0 40px 80px -30px rgba(11,21,48,.45)}
+.bf{background:var(--ice);border-radius:16px;padding:12px 20px;display:flex;flex-direction:column;gap:2px}
+.bf label{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--skyd)}
+.bf select,.bf input{border:0;background:transparent;font:inherit;font-weight:600;color:var(--navy);font-size:16.5px;outline:none;padding:2px 0}
+.book .btn{border-radius:16px;padding:0 34px;height:100%}
+
+.mq{padding:70px 0 40px;overflow:hidden}
+.mq-track{display:flex;width:max-content;animation:roll 40s linear infinite}
+.mq span{font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:clamp(46px,6vw,86px);letter-spacing:-.03em;line-height:1.05;white-space:nowrap;display:flex;align-items:center;color:var(--navy)}
+.mq span.o{color:transparent;-webkit-text-stroke:1.5px var(--navy)}
+.mq span::after{content:"";width:60px;height:22px;margin:0 36px;background:repeating-linear-gradient(to bottom,var(--sky) 0 3px,transparent 3px 7px);border-radius:2px}
 @keyframes roll{to{transform:translateX(-50%)}}
 
-/* services index */
-.services{padding:130px 0 120px}
-.sv-head{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:end;margin-bottom:64px}
-.sv-head .h{font-size:clamp(38px,4.6vw,64px);margin-top:18px}
-.sv-head p{color:var(--muted);max-width:460px}
-.sv-body{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
-.sv-list{border-top:2px solid var(--navy)}
-.sv-item{display:grid;grid-template-columns:70px 1fr 40px;gap:10px;padding:30px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:.3s}
-.sv-item .n{font-family:var(--wide);font-stretch:110%;font-weight:700;color:var(--sky-d);font-size:15px;padding-top:8px}
-.sv-item h3{font-family:var(--wide);font-stretch:120%;font-weight:800;font-size:clamp(24px,2.5vw,34px);color:var(--navy);line-height:1.1;transition:.3s}
-.sv-item p{color:var(--muted);max-height:0;overflow:hidden;opacity:0;transition:.4s;margin-top:0;max-width:440px}
-.sv-item .arr{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:.3s;color:var(--navy)}
-.sv-item.on h3{color:var(--sky-d);padding-left:6px}
-.sv-item.on p{max-height:140px;opacity:1;margin-top:12px}
-.sv-item.on .arr{background:var(--navy);border-color:var(--navy);color:#fff;transform:rotate(-45deg)}
-.sv-item .mimg{display:none}
-.sv-stage{position:sticky;top:120px;aspect-ratio:4/4.6;overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 70px),calc(100% - 70px) 100%,0 100%)}
-.sv-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s,transform 1.2s}
-.sv-stage img.on{opacity:1;transform:none}
-.sv-stage .cap{position:absolute;left:0;bottom:0;background:var(--navy);color:#fff;padding:16px 24px;font-family:var(--wide);font-stretch:112%;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;z-index:2}
+.services{padding:70px 0 130px}
+.shead{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px}
+.shead h2{font-size:clamp(40px,5vw,72px);color:var(--navy);margin-top:18px}
+.shead h2 em{color:var(--skyd)}
+.shead p{max-width:420px;color:var(--muted)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:300px;gap:20px}
+.card{position:relative;border-radius:var(--r);overflow:hidden;color:#fff;isolation:isolate;cursor:pointer}
+.card:nth-child(1){grid-column:span 7;grid-row:span 2}
+.card:nth-child(2){grid-column:span 5}
+.card:nth-child(3){grid-column:span 5}
+.card:nth-child(4){grid-column:span 12}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,16,42,.05) 20%,rgba(7,16,42,.88) 100%);transition:.5s}
+.card:hover img{transform:scale(1.07)}
+.card:hover::before{background:linear-gradient(180deg,rgba(25,45,86,.35) 0%,rgba(7,16,42,.92) 100%)}
+.card .num{position:absolute;top:24px;left:26px;font-family:var(--wide);font-stretch:115%;font-weight:700;font-size:14px;letter-spacing:.1em;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:100px}
+.card .go{position:absolute;top:20px;right:20px;width:52px;height:52px;border-radius:50%;background:var(--sky);color:var(--deep);display:grid;place-items:center;transform:scale(.6) rotate(-45deg);opacity:0;transition:.4s}
+.card:hover .go{transform:scale(1) rotate(-45deg);opacity:1}
+.card .txt{position:absolute;left:28px;right:28px;bottom:26px}
+.card h3{font-family:var(--wide);font-stretch:120%;font-weight:800;font-size:clamp(26px,2.6vw,38px);line-height:1.02;letter-spacing:-.02em}
+.card:nth-child(1) h3{font-size:clamp(34px,3.8vw,56px)}
+.card p{color:#D2DCEB;font-size:15.5px;max-width:480px;max-height:0;opacity:0;overflow:hidden;transition:.5s;margin-top:0}
+.card:hover p,.card:nth-child(1) p{max-height:120px;opacity:1;margin-top:12px}
+.card:nth-child(4) img{object-position:50% 30%}
 
-/* quote */
-.quote{background:var(--ice);padding:120px 0;position:relative}
-.quote .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
-.quote .h{font-size:clamp(36px,4.2vw,58px);margin:18px 0 22px}
-.quote .lead{color:var(--muted);max-width:430px}
-.qlist{margin-top:34px;display:grid;gap:14px}
-.qlist div{display:flex;gap:14px;align-items:center;font-weight:600;color:var(--navy)}
-.qlist div::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D1830' stroke-width='3.2'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
-.callcard{margin-top:42px;display:flex;align-items:center;gap:20px;padding:24px 26px;background:var(--navy);color:#fff;border-radius:4px;max-width:430px}
-.callcard .ic{width:52px;height:52px;border-radius:50%;background:var(--sky);display:grid;place-items:center;color:var(--ink);flex:none}
-.callcard small{color:#A9B8D0;font-size:13px;display:block}
-.callcard a{font-family:var(--wide);font-stretch:115%;font-weight:800;font-size:24px}
-.qform{background:#fff;padding:44px;border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(13,24,48,.45)}
-.qform h3{font-family:var(--wide);font-stretch:115%;font-weight:800;font-size:26px;color:var(--navy);margin-bottom:6px}
-.qform > p{color:var(--muted);font-size:15px;margin-bottom:28px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fld{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
-.fld label{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
-.fld input,.fld select,.fld textarea{font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--mist);background:#FAFCFE;border-radius:3px;color:var(--text);outline:none;transition:.2s}
-.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--sky);background:#fff}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
-.chips input{display:none}
-.chips label{padding:10px 16px;border:1.5px solid var(--mist);border-radius:40px;font-size:14.5px;font-weight:600;color:var(--navy);cursor:pointer;transition:.2s;text-transform:none;letter-spacing:0}
-.chips input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff}
-.qform .btn{width:100%;justify-content:center;margin-top:6px}
+.why{background:var(--deep);color:#fff;padding:140px 0;position:relative;overflow:hidden}
+.why .flow{opacity:.25}
+.why .wrap{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:90px;align-items:center}
+.why-vis{position:relative}
+.why-vis .big{border-radius:32px;overflow:hidden;aspect-ratio:4/4.4}
+.why-vis .big img{width:100%;height:100%;object-fit:cover;object-position:72% 50%}
+.why-vis .tile{position:absolute;right:-40px;bottom:-40px;width:250px;background:var(--sky);color:var(--deep);border-radius:24px;padding:28px}
+.why-vis .tile b{display:block;font-family:var(--wide);font-stretch:120%;font-weight:900;font-size:30px;line-height:1.05;margin-bottom:10px}
+.why-vis .tile span{font-size:15px;font-weight:500}
+.why-vis .bars{position:absolute;left:-30px;top:40px;display:grid;gap:8px;z-index:2}
+.why-vis .bars i{height:4px;border-radius:4px;background:var(--sky);display:block;width:90px}
+.why-vis .bars i:nth-child(2){width:64px}.why-vis .bars i:nth-child(3){width:40px}
+.why .eyebrow{color:var(--sky)}
+.why h2{font-size:clamp(40px,4.8vw,68px);margin:18px 0 48px}
+.why h2 em{color:var(--sky)}
+.feat{display:grid;grid-template-columns:76px 1fr;gap:22px;padding:26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.feat:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.feat .ic{width:76px;height:76px;border-radius:22px;background:linear-gradient(145deg,#21407A,#152A55);border:1px solid rgba(77,189,236,.25);display:grid;place-items:center;transition:.4s}
+.feat .ic img{width:38px;height:38px;transition:.4s}
+.feat:hover .ic{background:var(--sky);transform:rotate(-6deg)}
+.feat:hover .ic img{filter:brightness(.1)}
+.feat h3{font-family:var(--wide);font-stretch:115%;font-weight:700;font-size:23px;margin-bottom:6px}
+.feat p{color:#A9B9D2;font-size:15.5px}
 
-/* why */
-.why{background:var(--navy);color:#fff;padding:130px 0;position:relative;overflow:hidden}
-.why::before{content:"";position:absolute;right:-120px;top:80px;width:520px;height:200px;background:repeating-linear-gradient(to bottom,rgba(77,189,236,.14) 0 6px,transparent 6px 22px)}
-.why .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;position:relative}
-.why .h{color:#fff;font-size:clamp(40px,4.8vw,66px);margin-top:18px}
-.why .h em{color:var(--sky)}
-.why .tag{color:var(--sky)}
-.why-l p{color:#AFC0D8;margin-top:24px;max-width:380px}
-.why-l .btn{margin-top:36px}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.15);border-left:1px solid rgba(255,255,255,.15)}
-.why-card{padding:40px 34px 44px;border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);transition:.35s}
-.why-card:hover{background:rgba(77,189,236,.08)}
-.why-card img{width:48px;height:48px;margin-bottom:28px}
-.why-card h3{font-family:var(--wide);font-stretch:115%;font-weight:700;font-size:22px;margin-bottom:12px}
-.why-card p{color:#AFC0D8;font-size:15.5px}
+.process{background:var(--ice);padding:140px 0;position:relative;overflow:hidden}
+.phead{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
+.phead h2{font-size:clamp(40px,5vw,72px);color:var(--navy);margin-top:18px}
+.phead h2 em{color:var(--skyd)}
+.phead p{color:var(--muted);max-width:430px;justify-self:end}
+.track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.track .line{position:absolute;left:0;right:0;top:46px;height:2px;background:var(--mist)}
+.track .line::after{content:"";position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--sky),var(--navy));transition:width 2.2s cubic-bezier(.2,.8,.2,1)}
+.track.in .line::after{width:100%}
+.pstep{position:relative;background:#fff;border-radius:var(--r);padding:30px 28px 34px;transition:.4s;box-shadow:0 20px 40px -30px rgba(11,21,48,.35)}
+.pstep:nth-child(even){margin-top:110px}
+.pstep:hover{transform:translateY(-8px);background:var(--navy);color:#fff}
+.pstep .n{font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:78px;line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--sky);display:block;margin-bottom:26px}
+.pstep small{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--skyd)}
+.pstep:hover small{color:var(--sky)}
+.pstep h3{font-family:var(--wide);font-stretch:120%;font-weight:800;font-size:25px;text-transform:uppercase;color:var(--navy);margin:6px 0 10px;transition:.3s}
+.pstep:hover h3{color:#fff}
+.pstep p{color:var(--muted);font-size:15.5px;transition:.3s}
+.pstep:hover p{color:#B9C7DC}
 
-/* process */
-.process{padding:130px 0 110px;background:#fff}
-.pr-head{text-align:center;max-width:720px;margin:0 auto 80px}
-.pr-head .h{font-size:clamp(38px,4.6vw,64px);margin-top:18px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;gap:0}
-.steps::before{content:"";position:absolute;top:37px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sky) 0 50%,transparent 50%) 0 0/16px 2px repeat-x}
-.step{padding-right:34px;position:relative}
-.step .dot{width:76px;height:76px;border-radius:50%;background:#fff;border:2px solid var(--navy);display:grid;place-items:center;font-family:var(--wide);font-stretch:120%;font-weight:800;font-size:24px;color:var(--navy);position:relative;z-index:2;transition:.3s}
-.step:hover .dot{background:var(--sky);border-color:var(--sky);color:var(--ink)}
-.step small{display:block;margin:28px 0 6px;font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--sky-d);text-transform:uppercase}
-.step h3{font-family:var(--wide);font-stretch:118%;font-weight:800;font-size:26px;color:var(--navy);text-transform:uppercase;letter-spacing:-.01em;margin-bottom:12px}
-.step p{color:var(--muted);font-size:15.5px}
-
-/* reviews */
-.reviews{padding:0 0 130px}
-.rv{display:grid;grid-template-columns:340px 1fr 1fr;border:1px solid var(--line)}
-.rv-score{background:var(--ice);padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
-.rv-score .big{font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:96px;line-height:.9;color:var(--navy)}
-.stars{color:#F5B423;letter-spacing:3px;font-size:20px}
-.rv-score p{color:var(--muted);font-size:15px}
-.rv-score .h{font-size:30px}
-.rv-card{padding:48px 44px;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
-.rv-card blockquote{font-family:var(--wide);font-stretch:100%;font-style:italic;font-weight:500;font-size:clamp(24px,2.2vw,31px);line-height:1.25;color:var(--navy)}
-.rv-card blockquote::before{content:"\201C";display:block;font-style:normal;font-size:70px;line-height:.6;color:var(--sky);margin-bottom:16px;font-weight:800}
+.reviews{padding:140px 0;background:#fff}
+.rgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center}
+.rgrid h2{font-size:clamp(40px,4.6vw,66px);color:var(--navy);margin:18px 0 24px}
+.rgrid h2 em{color:var(--skyd)}
+.rgrid .sub{color:var(--muted);max-width:360px}
+.rstack{display:grid;gap:22px}
+.rcard{position:relative;border-radius:var(--r);padding:42px 46px;background:var(--ice);overflow:hidden}
+.rcard:nth-child(2){background:var(--navy);color:#fff;margin-left:70px}
+.rcard::before{content:"\201D";position:absolute;right:24px;top:-30px;font-family:var(--wide);font-weight:900;font-size:220px;line-height:1;color:var(--sky);opacity:.18}
+.rcard .st{color:#F5B423;letter-spacing:3px;margin-bottom:16px}
+.rcard blockquote{font-family:var(--wide);font-stretch:105%;font-weight:600;font-size:clamp(24px,2.4vw,34px);line-height:1.18;letter-spacing:-.01em;color:var(--navy);margin-bottom:28px}
+.rcard:nth-child(2) blockquote{color:#fff}
 .who{display:flex;align-items:center;gap:14px}
-.who .av{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--wide);font-weight:800}
-.who b{display:block;color:var(--navy)}
-.who span{font-size:14px;color:var(--muted)}
+.who .av{width:50px;height:50px;border-radius:50%;background:var(--sky);color:var(--deep);display:grid;place-items:center;font-family:var(--wide);font-weight:800}
+.who b{display:block}
+.who span{font-size:14px;opacity:.7}
 
-/* area + cta */
-.area{position:relative;color:#fff;overflow:hidden;background:var(--ink)}
-.area-bg{position:absolute;inset:0}
-.area-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 40%;opacity:.38}
-.area-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,24,48,.6),var(--ink) 92%)}
-.area .wrap{position:relative;padding:120px 0 110px}
-.area .tag{color:var(--sky)}
-.cities{margin:26px 0 70px;display:flex;flex-wrap:wrap;gap:4px 0}
-.cities span{font-family:var(--wide);font-stretch:125%;font-weight:800;font-size:clamp(38px,5.6vw,84px);line-height:1;letter-spacing:-.03em;display:flex;align-items:center}
-.cities span:not(:last-child)::after{content:"/";font-stretch:90%;font-weight:300;color:var(--sky);margin:0 .28em}
-.cta-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;border-top:1px solid rgba(255,255,255,.18);padding-top:46px}
-.cta-row h2{font-family:var(--wide);font-stretch:118%;font-weight:800;font-size:clamp(30px,3.4vw,46px);line-height:1.05}
-.cta-row h2 em{font-style:italic;font-stretch:95%;font-weight:500;color:var(--sky)}
-.cta-row p{color:#AFC0D8;margin-top:12px}
-.cta-row .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.quote{padding:0 0 140px}
+.qbox{position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:36px;overflow:hidden;background:var(--navy)}
+.qimg{position:relative;min-height:640px}
+.qimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:100% 60%;transform:scaleX(-1)}
+.qimg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,45,86,0) 55%,var(--navy))}
+.qimg .tag{position:absolute;left:30px;bottom:30px;z-index:2;background:rgba(7,16,42,.55);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:18px;padding:18px 22px;max-width:320px}
+.qimg .tag b{font-family:var(--wide);font-stretch:115%;display:block;font-size:18px}
+.qimg .tag span{font-size:14px;color:#C8D4E6}
+.qform{padding:64px 60px;color:#fff}
+.qform .eyebrow{color:var(--sky)}
+.qform h2{font-size:clamp(36px,3.8vw,54px);margin:16px 0 14px}
+.qform h2 em{color:var(--sky)}
+.qform > p{color:#B4C3DA;margin-bottom:30px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.chips input{display:none}
+.chips label{padding:11px 18px;border:1.5px solid rgba(255,255,255,.22);border-radius:100px;font-size:14.5px;font-weight:600;cursor:pointer;transition:.2s}
+.chips input:checked+label{background:var(--sky);border-color:var(--sky);color:var(--deep)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.qform input[type=text],.qform input[type=tel],.qform input[type=email],.qform select,.qform textarea{width:100%;font:inherit;font-size:16px;padding:16px 18px;border-radius:14px;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;outline:none;transition:.2s}
+.qform select option{color:#000}
+.qform ::placeholder{color:#8FA2C0}
+.qform input:focus,.qform select:focus,.qform textarea:focus{border-color:var(--sky);background:rgba(255,255,255,.1)}
+.qform textarea{margin-bottom:18px}
+.qform .btn{width:100%;justify-content:center}
 
-/* footer */
-footer{background:#08101F;color:#9FB0C8;padding:90px 0 0;font-size:15px}
-.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:70px}
-.ft .logo img{height:78px;width:auto;margin-bottom:22px}
-.ft h4{font-family:var(--wide);font-stretch:112%;color:#fff;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+.cta{position:relative;background:var(--sky);color:var(--deep);overflow:hidden;padding:120px 0}
+.cta::before{content:"";position:absolute;right:-6%;top:-30%;width:62%;height:160%;background:repeating-linear-gradient(to bottom,rgba(25,45,86,.09) 0 10px,transparent 10px 30px);transform:skewX(-14deg)}
+.cta .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:end}
+.cta .eyebrow{color:var(--navy)}
+.cta h2{font-size:clamp(52px,7vw,112px);color:var(--navy);margin:20px 0 34px}
+.cta h2 em{color:#fff}
+.cities{display:flex;flex-wrap:wrap;gap:10px}
+.cities span{background:rgba(255,255,255,.4);border:1.5px solid rgba(25,45,86,.18);padding:10px 20px;border-radius:100px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.cities span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--navy)}
+.cta-r{background:var(--deep);color:#fff;border-radius:28px;padding:40px}
+.cta-r small{color:#9FB0C8;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.cta-r a.ph{display:block;font-family:var(--wide);font-stretch:118%;font-weight:900;font-size:clamp(30px,3vw,42px);color:var(--sky);margin:8px 0 22px;letter-spacing:-.02em}
+.cta-r p{color:#B4C3DA;font-size:15px;margin-bottom:26px}
+.cta-r .btn{width:100%;justify-content:center}
+
+footer{background:var(--deep);color:#93A5C0;padding:100px 0 0;font-size:15px;position:relative;overflow:hidden}
+.fbig{font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:clamp(70px,15vw,230px);line-height:.8;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(77,189,236,.2);white-space:nowrap;margin-top:60px;text-align:center;user-select:none}
+.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:50px}
+.ft .logo img{height:84px;margin:0 0 20px}
+.ft h4{font-family:var(--wide);font-stretch:112%;color:#fff;font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
 .ft ul{list-style:none;display:grid;gap:11px}
 .ft a:hover{color:var(--sky)}
-.ft .ci{display:grid;gap:14px}
-.ft .ci a,.ft .ci span{display:flex;gap:12px;align-items:flex-start}
-.ft .ci svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--sky)}
-.fb{border-top:1px solid rgba(255,255,255,.1);padding:24px 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
-.fb a{color:#fff;font-weight:600}
-.fb a:hover{color:var(--sky)}
+.ci{display:grid;gap:14px}
+.ci a,.ci span{display:flex;gap:12px}
+.ci svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--sky)}
+.fb{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;position:relative}
+.fb a{color:#fff;font-weight:600}.fb a:hover{color:var(--sky)}
 
 .mbar{display:none}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
-.reveal.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
-@media(max-width:1080px){
-  nav,.hcall{display:none}
+@media(max-width:1100px){
+  nav,.hphone{display:none}
   .burger{display:block}
-  nav.open{display:block;position:absolute;top:84px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:10px 4vw 20px}
-  nav.open ul{flex-direction:column;gap:0}
-  nav.open a{padding:12px 0}
-  nav.open .dd{position:static;opacity:1;visibility:visible;transform:none;border:0;box-shadow:none;padding:0 0 0 16px}
-  .hero .wrap{grid-template-columns:1fr}
-  .hero-img{inset:0}
-  .hero-img::after{background:linear-gradient(180deg,rgba(13,24,48,.55),var(--ink) 85%)}
-  .hero-stamp{display:none}
-  .sv-head,.sv-body,.quote .wrap,.why .wrap{grid-template-columns:1fr;gap:40px}
-  .sv-stage{display:none}
-  .sv-item .mimg{display:block;grid-column:2/4;margin-top:16px;aspect-ratio:16/10;object-fit:cover;width:100%}
-  .sv-item:not(.on) .mimg{display:none}
-  .steps{grid-template-columns:1fr 1fr;row-gap:50px}
-  .steps::before{display:none}
-  .rv{grid-template-columns:1fr}
-  .rv-card{border-left:0;border-top:1px solid var(--line)}
-  .cta-row{grid-template-columns:1fr}
+  header .wrap{position:relative}
+  nav.open{display:block;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;border-radius:22px;padding:12px;box-shadow:0 30px 60px -25px rgba(0,0,0,.4)}
+  nav.open ul{flex-direction:column}
+  nav.open .dd{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;padding:0 0 0 14px}
+  .hero .wrap,.why .wrap,.rgrid,.qbox,.cta .wrap,.phead{grid-template-columns:1fr}
+  .hvis{height:460px}
+  .hvis .ph{inset:0}
+  .chip.svc{right:10px}
+  .book form{grid-template-columns:1fr 1fr}
+  .book .btn{grid-column:1/-1;padding:20px}
+  .shead{flex-direction:column;align-items:start}
+  .card:nth-child(n){grid-column:span 12;grid-row:span 1}
+  .card p{max-height:120px;opacity:1;margin-top:10px}
+  .why-vis .tile{right:16px;bottom:-30px}
+  .track{grid-template-columns:1fr 1fr}
+  .track .line{display:none}
+  .pstep:nth-child(even){margin-top:0}
+  .phead p{justify-self:start}
+  .rcard:nth-child(2){margin-left:0}
+  .qimg{min-height:340px}
+  .qimg::after{background:linear-gradient(180deg,transparent 50%,var(--navy))}
   .ft{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   body{font-size:16px}
-  .topbar .l{display:none}.topbar .wrap{justify-content:center}
-  .hcta .btn{display:none}
-  header .logo img{height:50px}
-  .hero-copy{padding:70px 0 90px}
-  .streaks{top:40px}
-  .why-grid,.grid2,.steps,.ft{grid-template-columns:1fr}
-  .qform{padding:30px 22px}
-  .services,.quote,.why,.process{padding:90px 0}
-  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60}
-  .mbar a{padding:16px;text-align:center;font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:15px}
-  .mbar a:first-child{background:var(--navy);color:#fff}.mbar a:last-child{background:var(--sky);color:var(--ink)}
-  footer{padding-bottom:56px}
+  header{padding:12px 0}
+  .logo img{height:58px}
+  .hright .btn{display:none}
+  .hero{padding:130px 0 140px}
+  .hvis{height:380px}
+  .chip.rate b{font-size:32px}
+  .chip.svc{display:none}
+  .book form{grid-template-columns:1fr}
+  .bento{grid-auto-rows:340px}
+  .track,.g2,.ft{grid-template-columns:1fr}
+  .services,.why,.process,.reviews{padding:90px 0}
+  .qform{padding:44px 24px}
+  .cta{padding:90px 0}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:60}
+  .mbar a{padding:16px;text-align:center;border-radius:100px;font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:15px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+  .mbar a:first-child{background:var(--navy);color:#fff}.mbar a:last-child{background:var(--sky);color:var(--deep)}
+  footer{padding-bottom:80px}
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <div class="l">Duct cleaning in <b>Calgary, Airdrie, Okotoks &amp; Chestermere</b></div>
-    <div class="r">
-      <a href="mailto:info@primeairductcleaning.ca">info@primeairductcleaning.ca</a>
-      <a href="tel:+14036510510"><b>+1 403 651-0510</b></a>
-    </div>
-  </div>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap">
     <a href="#" class="logo"><img src="images/logo-navy.webp" alt="Prime Air HVAC &amp; Duct Cleaning"></a>
     <nav id="nav">
@@ -273,8 +308,8 @@ footer{background:#08101F;color:#9FB0C8;padding:90px 0 0;font-size:15px}
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hcta">
-      <div class="hcall"><small>Call for a quote</small><a href="tel:+14036510510">403 651-0510</a></div>
+    <div class="hright">
+      <a class="hphone" href="tel:+14036510510"><span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>403 651-0510</a>
       <a href="#quote" class="btn btn-navy">Schedule Services</a>
       <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
     </div>
@@ -282,184 +317,181 @@ footer{background:#08101F;color:#9FB0C8;padding:90px 0 0;font-size:15px}
 </header>
 
 <section class="hero">
-  <div class="streaks"><i></i><i></i><i></i><i></i></div>
-  <div class="hero-img"><img src="images/hero-duct-vacuum.webp" alt="Prime Air technician vacuuming a floor duct in a basement furnace room"></div>
+  <div class="grain"></div>
+  <svg class="flow" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="fg" x1="0" x2="1"><stop offset="0" stop-color="#4DBDEC" stop-opacity="0"/><stop offset=".5" stop-color="#4DBDEC"/><stop offset="1" stop-color="#8AD6F5" stop-opacity=".2"/></linearGradient></defs>
+    <path d="M-50 640 C 300 560, 520 760, 820 620 S 1250 480, 1500 560"/>
+    <path d="M-50 690 C 280 620, 560 800, 860 670 S 1260 540, 1500 610"/>
+    <path d="M-50 740 C 260 680, 600 840, 900 720 S 1270 600, 1500 660"/>
+    <path d="M-50 590 C 320 500, 480 720, 780 570 S 1240 420, 1500 510"/>
+    <path d="M-50 790 C 240 740, 640 880, 940 770 S 1280 660, 1500 710"/>
+    <path d="M-50 540 C 340 440, 440 680, 740 520 S 1230 360, 1500 460"/>
+  </svg>
   <div class="wrap">
-    <div class="hero-copy">
-      <span class="tag" style="color:var(--sky)">Prime Air HVAC &amp; Duct Cleaning</span>
-      <h1 style="margin-top:22px">Expert Furnace and Duct<em>Cleaning.</em></h1>
-      <p>Duct, furnace, dryer vent and HVAC cleaning that improves your indoor air quality and keeps your system running efficiently.</p>
+    <div>
+      <span class="eyebrow"><i><b></b><b></b><b></b></i>Prime Air HVAC &amp; Duct Cleaning</span>
+      <h1 class="disp"><span class="ln"><span>Expert Furnace</span></span><span class="ln"><span>and Duct</span></span><span class="ln"><span><em>Cleaning.</em></span></span></h1>
+      <p class="lead">Duct, furnace, dryer vent and HVAC cleaning in Calgary, Airdrie, Okotoks and Chestermere. Cleaner indoor air and a more efficient system.</p>
       <div class="ctas">
         <a href="#quote" class="btn btn-sky">Schedule Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="tel:+14036510510" class="btn btn-ghost">Call 403 651-0510</a>
+        <a href="tel:+14036510510" class="btn btn-line">Call +1 403 651-0510</a>
       </div>
     </div>
-  </div>
-  <div class="hero-stamp">
-    <small>Office</small>
-    <strong>455 Sage Valley Dr NW, Calgary, AB</strong>
+    <div class="hvis">
+      <div class="ring"></div>
+      <div class="ph"><img src="images/hero-duct-vacuum.webp" alt="Prime Air technician vacuuming a floor duct in a basement furnace room"></div>
+      <div class="chip svc"><div>Duct Cleaning</div><div>Furnace Cleaning</div><div>Dryer Vent Cleaning</div><div>HVAC Cleaning</div></div>
+      <div class="chip rate"><b>5.0</b><div><span class="st">★★★★★</span><small>Rating based on 1,234 ratings</small></div></div>
+    </div>
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Duct Cleaning</span><span>Furnace Cleaning</span><span>Dryer Vent <em>Cleaning</em></span><span>HVAC Cleaning</span><span>Calgary <em>&amp; area</em></span>
-    <span>Duct Cleaning</span><span>Furnace Cleaning</span><span>Dryer Vent <em>Cleaning</em></span><span>HVAC Cleaning</span><span>Calgary <em>&amp; area</em></span>
+<div class="book">
+  <div class="wrap">
+    <form onsubmit="event.preventDefault();location.hash='quote'">
+      <div class="bf"><label>Service</label><select><option>Duct Cleaning</option><option>Furnace Cleaning</option><option>Dryer Vent Cleaning</option><option>HVAC Cleaning</option></select></div>
+      <div class="bf"><label>Location</label><select><option>Calgary</option><option>Airdrie</option><option>Okotoks</option><option>Chestermere</option></select></div>
+      <div class="bf"><label>Phone</label><input type="tel" placeholder="Your number"></div>
+      <button class="btn btn-navy" type="submit">Get a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </div>
+</div>
+
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span>Duct Cleaning</span><span class="o">Furnace Cleaning</span><span>Dryer Vent Cleaning</span><span class="o">HVAC Cleaning</span>
+    <span>Duct Cleaning</span><span class="o">Furnace Cleaning</span><span>Dryer Vent Cleaning</span><span class="o">HVAC Cleaning</span>
   </div>
 </div>
 
 <section class="services" id="services">
   <div class="wrap">
-    <div class="sv-head reveal">
+    <div class="shead rv">
       <div>
-        <span class="tag">Our Services</span>
-        <h2 class="h">Customized Cleaning <em>Solutions</em></h2>
+        <span class="eyebrow"><i><b></b><b></b><b></b></i>Our Services</span>
+        <h2 class="disp">Customized Cleaning <em>Solutions</em></h2>
       </div>
-      <p>We offer duct cleaning in Calgary, Airdrie, Okotoks and Chestermere, improving indoor air quality and HVAC efficiency for homes and businesses.</p>
+      <p>We offer duct cleaning in Calgary, Airdrie, Okotoks and Chestermere, improving indoor air quality and HVAC efficiency for residential and commercial properties.</p>
     </div>
-    <div class="sv-body">
-      <div class="sv-list">
-        <div class="sv-item on" data-i="0">
-          <span class="n">01</span>
-          <div><h3>Duct Cleaning</h3><p>Deep cleaning of air ducts to remove dust, allergens, and debris, improving indoor air quality and HVAC system performance.</p></div>
-          <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <img class="mimg" src="images/ceiling-vent-cleaning.webp" alt="Duct cleaning">
-        </div>
-        <div class="sv-item" data-i="1">
-          <span class="n">02</span>
-          <div><h3>Furnace Cleaning</h3><p>Thorough furnace cleaning to ensure efficient operation, cleaner airflow, and reliable heating throughout the season.</p></div>
-          <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <img class="mimg" src="images/furnace-cleaning.webp" alt="Furnace cleaning">
-        </div>
-        <div class="sv-item" data-i="2">
-          <span class="n">03</span>
-          <div><h3>Dryer Vent Cleaning</h3><p>Remove lint buildup and airflow blockages to reduce fire risk, improve dryer efficiency, and extend the life of your dryer.</p></div>
-          <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <img class="mimg" src="images/dryer-vent-cleaning.webp" alt="Dryer vent cleaning">
-        </div>
-        <div class="sv-item" data-i="3">
-          <span class="n">04</span>
-          <div><h3>HVAC Cleaning</h3><p>Complete HVAC system cleaning to enhance air circulation, reduce contaminants, and maintain peak system efficiency.</p></div>
-          <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <img class="mimg" src="images/hvac-cleaning.webp" alt="HVAC cleaning">
-        </div>
-      </div>
-      <div class="sv-stage">
-        <img class="on" src="images/ceiling-vent-cleaning.webp" alt="">
-        <img src="images/furnace-cleaning.webp" alt="">
-        <img src="images/dryer-vent-cleaning.webp" alt="">
-        <img src="images/hvac-cleaning.webp" alt="">
-        <div class="cap" id="cap">Duct Cleaning</div>
-      </div>
+    <div class="bento">
+      <a href="#quote" class="card rv">
+        <img src="images/ceiling-vent-cleaning.webp" alt="Technician cleaning a ceiling air vent">
+        <span class="num">01</span><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="txt"><h3>Duct Cleaning</h3><p>Deep cleaning of air ducts to remove dust, allergens, and debris, improving indoor air quality and HVAC system performance.</p></div>
+      </a>
+      <a href="#quote" class="card rv d1">
+        <img src="images/furnace-cleaning.webp" alt="Furnace filter being replaced">
+        <span class="num">02</span><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="txt"><h3>Furnace Cleaning</h3><p>Thorough furnace cleaning to ensure efficient operation, cleaner airflow, and reliable heating throughout the season.</p></div>
+      </a>
+      <a href="#quote" class="card rv d2">
+        <img src="images/dryer-vent-cleaning.webp" alt="Dryer vent hose">
+        <span class="num">03</span><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="txt"><h3>Dryer Vent Cleaning</h3><p>Remove lint buildup and airflow blockages to reduce fire risk, improve dryer efficiency, and extend the life of your dryer.</p></div>
+      </a>
+      <a href="#quote" class="card rv">
+        <img src="images/hvac-cleaning.webp" alt="Technician servicing an HVAC return vent">
+        <span class="num">04</span><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="txt"><h3>HVAC Cleaning</h3><p>Complete HVAC system cleaning to enhance air circulation, reduce contaminants, and maintain peak system efficiency.</p></div>
+      </a>
     </div>
-  </div>
-</section>
-
-<section class="quote" id="quote">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="tag">Transparent Pricing</span>
-      <h2 class="h">Get a clear, <em>upfront</em> quote.</h2>
-      <p class="lead">No hidden fees, no surprises. Tell us what you need cleaned and we will come back with clear, upfront pricing and honest recommendations.</p>
-      <div class="qlist">
-        <div>Clear, upfront pricing</div>
-        <div>Evening and weekend appointments</div>
-        <div>Certified, experienced technicians</div>
-      </div>
-      <div class="callcard">
-        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
-        <div><small>Call Now! Get a quote.</small><a href="tel:+14036510510">+1 403 651-0510</a></div>
-      </div>
-    </div>
-    <form class="qform reveal" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Thanks! We will be in touch.'">
-      <h3>Request a Quote</h3>
-      <p>Pick your services and we will get back to you with pricing.</p>
-      <div class="fld"><label>Services needed</label></div>
-      <div class="chips">
-        <input type="checkbox" id="c1" checked><label for="c1">Duct Cleaning</label>
-        <input type="checkbox" id="c2"><label for="c2">Furnace Cleaning</label>
-        <input type="checkbox" id="c3"><label for="c3">Dryer Vent Cleaning</label>
-        <input type="checkbox" id="c4"><label for="c4">HVAC Cleaning</label>
-      </div>
-      <div class="grid2">
-        <div class="fld"><label for="n">Name</label><input id="n" required></div>
-        <div class="fld"><label for="p">Phone</label><input id="p" type="tel" required></div>
-      </div>
-      <div class="grid2">
-        <div class="fld"><label for="e">Email</label><input id="e" type="email"></div>
-        <div class="fld"><label for="a">Property</label><select id="a"><option>Residential</option><option>Commercial</option></select></div>
-      </div>
-      <div class="fld"><label for="m">Message</label><textarea id="m" rows="3"></textarea></div>
-      <button class="btn btn-navy" type="submit">Get a Quote</button>
-    </form>
   </div>
 </section>
 
 <section class="why">
+  <svg class="flow" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-50 140 C 300 60, 520 260, 820 120 S 1250 -20, 1500 60"/>
+    <path d="M-50 190 C 280 120, 560 300, 860 170 S 1260 40, 1500 110"/>
+    <path d="M-50 240 C 260 180, 600 340, 900 220 S 1270 100, 1500 160"/>
+  </svg>
   <div class="wrap">
-    <div class="why-l reveal">
-      <span class="tag">Why Choose Us</span>
-      <h2 class="h">Clean air, <em>done right.</em></h2>
-      <p>From flexible appointments to quality components, here is what you can expect when Prime Air comes to your home or business.</p>
-      <a href="#quote" class="btn btn-sky">Schedule Services</a>
+    <div class="why-vis rv">
+      <div class="bars"><i></i><i></i><i></i></div>
+      <div class="big"><img src="images/furnace-room.webp" alt="Clean residential furnace room"></div>
+      <div class="tile"><b>Evenings &amp; weekends.</b><span>Appointment times that fit your schedule.</span></div>
     </div>
-    <div class="why-grid reveal">
-      <div class="why-card"><img src="images/icon-calendar.webp" alt=""><h3>Flexible Scheduling</h3><p>We offer convenient appointment times that fit your schedule, including evenings and weekends.</p></div>
-      <div class="why-card"><img src="images/icon-technician.webp" alt=""><h3>Expert Technicians</h3><p>Our certified technicians are highly trained and experienced, delivering precise, reliable duct cleaning.</p></div>
-      <div class="why-card"><img src="images/icon-pricing.webp" alt=""><h3>Transparent Pricing</h3><p>No hidden fees, no surprises. We provide clear, upfront pricing with honest recommendations.</p></div>
-      <div class="why-card"><img src="images/icon-parts.webp" alt=""><h3>Quality Parts</h3><p>We use high-quality, durable equipment and components designed to meet Canadian standards.</p></div>
+    <div>
+      <span class="eyebrow rv"><i><b></b><b></b><b></b></i>Why Choose Us</span>
+      <h2 class="disp rv">Clean air, <em>done right.</em></h2>
+      <div class="feat rv"><div class="ic"><img src="images/icon-calendar.webp" alt=""></div><div><h3>Flexible Scheduling</h3><p>We offer convenient appointment times that fit your schedule, including evenings and weekends.</p></div></div>
+      <div class="feat rv d1"><div class="ic"><img src="images/icon-technician.webp" alt=""></div><div><h3>Expert Technicians</h3><p>Our certified technicians are highly trained and experienced, delivering precise, reliable duct cleaning.</p></div></div>
+      <div class="feat rv d2"><div class="ic"><img src="images/icon-pricing.webp" alt=""></div><div><h3>Transparent Pricing</h3><p>No hidden fees, no surprises. We provide clear, upfront pricing with honest recommendations.</p></div></div>
+      <div class="feat rv d3"><div class="ic"><img src="images/icon-parts.webp" alt=""></div><div><h3>Quality Parts</h3><p>We use high-quality, durable equipment and components designed to meet Canadian standards.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="process">
   <div class="wrap">
-    <div class="pr-head reveal">
-      <span class="tag">How It Works</span>
-      <h2 class="h">Four steps to <em>cleaner air</em></h2>
+    <div class="phead rv">
+      <div>
+        <span class="eyebrow"><i><b></b><b></b><b></b></i>How It Works</span>
+        <h2 class="disp">Four steps to <em>cleaner air</em></h2>
+      </div>
+      <p>From your first call to the final walkthrough, every job follows the same simple process.</p>
     </div>
-    <div class="steps reveal">
-      <div class="step"><div class="dot">01</div><small>Step 1</small><h3>Quote</h3><p>Call or send a request and get clear, upfront pricing for the services you need.</p></div>
-      <div class="step"><div class="dot">02</div><small>Step 2</small><h3>Agreement</h3><p>Approve the quote and pick an appointment time that fits your schedule.</p></div>
-      <div class="step"><div class="dot">03</div><small>Step 3</small><h3>Execution</h3><p>Our technicians arrive and complete the cleaning with professional equipment.</p></div>
-      <div class="step"><div class="dot">04</div><small>Step 4</small><h3>Quality Check</h3><p>We inspect the finished work with you to make sure everything is done right.</p></div>
+    <div class="track" id="track">
+      <div class="line"></div>
+      <div class="pstep rv"><span class="n">01</span><small>Step 1</small><h3>Quote</h3><p>Call or send a request and get clear, upfront pricing for the services you need.</p></div>
+      <div class="pstep rv d1"><span class="n">02</span><small>Step 2</small><h3>Agreement</h3><p>Approve the quote and pick an appointment time that fits your schedule.</p></div>
+      <div class="pstep rv d2"><span class="n">03</span><small>Step 3</small><h3>Execution</h3><p>Our technicians arrive and complete the cleaning with professional equipment.</p></div>
+      <div class="pstep rv d3"><span class="n">04</span><small>Step 4</small><h3>Quality Check</h3><p>We inspect the finished work with you to make sure everything is done right.</p></div>
     </div>
   </div>
 </section>
 
 <section class="reviews">
-  <div class="wrap">
-    <div class="rv reveal">
-      <div class="rv-score">
-        <div><span class="tag">Testimonials</span><h2 class="h" style="margin-top:14px">What clients say</h2></div>
-        <div><div class="big">5.0</div><div class="stars">★★★★★</div><p>Rating based on 1,234 ratings</p></div>
-      </div>
-      <div class="rv-card">
-        <blockquote>Outstanding service from start to finish.</blockquote>
-        <div class="who"><span class="av">JG</span><div><b>Jason Griffin</b><span>★★★★★ 5.0</span></div></div>
-      </div>
-      <div class="rv-card">
-        <blockquote>Very professional team.</blockquote>
-        <div class="who"><span class="av">MB</span><div><b>Mr. Bali</b><span>Business · ★★★★★ 5.0</span></div></div>
-      </div>
+  <div class="wrap rgrid">
+    <div class="rv">
+      <span class="eyebrow"><i><b></b><b></b><b></b></i>Testimonials</span>
+      <h2 class="disp">Trusted by homes <em>&amp; businesses</em></h2>
+      <p class="sub">Here is what Prime Air clients have to say about our work.</p>
+    </div>
+    <div class="rstack">
+      <div class="rcard rv"><div class="st">★★★★★</div><blockquote>Outstanding service from start to finish.</blockquote><div class="who"><span class="av">JG</span><div><b>Jason Griffin</b><span>5.0 rating</span></div></div></div>
+      <div class="rcard rv d1"><div class="st">★★★★★</div><blockquote>Very professional team.</blockquote><div class="who"><span class="av">MB</span><div><b>Mr. Bali</b><span>Business · 5.0 rating</span></div></div></div>
     </div>
   </div>
 </section>
 
-<section class="area" id="contact">
-  <div class="area-bg"><img src="images/furnace-room.webp" alt=""></div>
+<section class="quote" id="quote">
   <div class="wrap">
-    <span class="tag">Service Areas</span>
-    <div class="cities"><span>Calgary</span><span>Airdrie</span><span>Okotoks</span><span>Chestermere</span></div>
-    <div class="cta-row">
-      <div>
-        <h2>Call Now! <em>Get a quote.</em></h2>
-        <p>455 Sage Valley Dr NW, Calgary, AB · info@primeairductcleaning.ca</p>
+    <div class="qbox rv">
+      <div class="qimg">
+        <img src="images/hero-duct-vacuum.webp" alt="">
+        <div class="tag"><b>Transparent Pricing</b><span>No hidden fees, no surprises. Clear, upfront pricing with honest recommendations.</span></div>
       </div>
-      <div class="ctas">
-        <a href="tel:+14036510510" class="btn btn-sky">+1 403 651-0510</a>
-        <a href="#quote" class="btn btn-ghost">Get a Quote</a>
-      </div>
+      <form class="qform" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Thanks! We will be in touch.'">
+        <span class="eyebrow"><i><b></b><b></b><b></b></i>Get a Quote</span>
+        <h2 class="disp">Request your <em>upfront</em> quote</h2>
+        <p>Pick your services and we will get back to you with clear pricing.</p>
+        <div class="chips">
+          <input type="checkbox" id="c1" checked><label for="c1">Duct Cleaning</label>
+          <input type="checkbox" id="c2"><label for="c2">Furnace Cleaning</label>
+          <input type="checkbox" id="c3"><label for="c3">Dryer Vent Cleaning</label>
+          <input type="checkbox" id="c4"><label for="c4">HVAC Cleaning</label>
+        </div>
+        <div class="g2"><input type="text" placeholder="Name" required><input type="tel" placeholder="Phone" required></div>
+        <div class="g2"><input type="email" placeholder="Email"><select><option>Residential</option><option>Commercial</option></select></div>
+        <textarea rows="3" placeholder="Message"></textarea>
+        <button class="btn btn-sky" type="submit">Get a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow"><i><b></b><b></b><b></b></i>Service Areas</span>
+      <h2 class="disp">Call Now! <em>Get a quote.</em></h2>
+      <div class="cities"><span>Calgary</span><span>Airdrie</span><span>Okotoks</span><span>Chestermere</span></div>
+    </div>
+    <div class="cta-r rv d1">
+      <small>Call us</small>
+      <a class="ph" href="tel:+14036510510">+1 403 651-0510</a>
+      <p>info@primeairductcleaning.ca<br>455 Sage Valley Dr NW, Calgary, AB</p>
+      <a href="#quote" class="btn btn-sky">Get a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -471,16 +503,9 @@ footer{background:#08101F;color:#9FB0C8;padding:90px 0 0;font-size:15px}
         <a href="#" class="logo"><img src="images/logo-white.webp" alt="Prime Air HVAC &amp; Duct Cleaning"></a>
         <p>Duct and HVAC cleaning services for homes and businesses across Calgary and surrounding areas.</p>
       </div>
-      <div>
-        <h4>Services</h4>
-        <ul><li><a href="#services">Duct Cleaning</a></li><li><a href="#services">Furnace Cleaning</a></li><li><a href="#services">Dryer Vent Cleaning</a></li><li><a href="#services">HVAC Cleaning</a></li></ul>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul><li><a href="#">About Us</a></li><li><a href="#">Projects</a></li><li><a href="#">Blog</a></li><li><a href="#">Price List</a></li><li><a href="#">Pricing Plans</a></li></ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
+      <div><h4>Services</h4><ul><li><a href="#services">Duct Cleaning</a></li><li><a href="#services">Furnace Cleaning</a></li><li><a href="#services">Dryer Vent Cleaning</a></li><li><a href="#services">HVAC Cleaning</a></li></ul></div>
+      <div><h4>Quick Links</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Projects</a></li><li><a href="#">Blog</a></li><li><a href="#">Price List</a></li><li><a href="#">Pricing Plans</a></li></ul></div>
+      <div><h4>Contact</h4>
         <div class="ci">
           <a href="tel:+14036510510"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+1 403 651-0510</a>
           <a href="mailto:info@primeairductcleaning.ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>info@primeairductcleaning.ca</a>
@@ -489,22 +514,20 @@ footer{background:#08101F;color:#9FB0C8;padding:90px 0 0;font-size:15px}
       </div>
     </div>
   </div>
+  <div class="fbig" aria-hidden="true">PRIME AIR</div>
   <div class="wrap fb">
     <span>© 2025 Prime Air HVAC &amp; Duct Cleaning. All rights reserved.</span>
-    <span><a href="https://cleaningdigital.ca/" target="_blank" rel="noopener">Design by Cleaning Digital.</a></span>
+    <a href="https://cleaningdigital.ca/" target="_blank" rel="noopener">Design by Cleaning Digital.</a>
   </div>
 </footer>
 
 <div class="mbar"><a href="tel:+14036510510">Call Now</a><a href="#quote">Get a Quote</a></div>
 
 <script>
-const items=document.querySelectorAll('.sv-item'),imgs=document.querySelectorAll('.sv-stage img'),cap=document.getElementById('cap');
-items.forEach(it=>{
-  const go=()=>{items.forEach(x=>x.classList.remove('on'));imgs.forEach(x=>x.classList.remove('on'));it.classList.add('on');imgs[it.dataset.i].classList.add('on');cap.textContent=it.querySelector('h3').textContent};
-  it.addEventListener('mouseenter',()=>{if(innerWidth>1080)go()});it.addEventListener('click',go);
-});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,#track').forEach(el=>io.observe(el));
+const h=document.getElementById('hdr');
+addEventListener('scroll',()=>h.classList.toggle('fixed',scrollY>200));
 </script>
 </body>
 </html>
